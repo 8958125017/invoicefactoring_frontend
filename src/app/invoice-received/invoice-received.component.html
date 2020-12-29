@@ -1,0 +1,129 @@
+<div id="myLandRecord">
+    <div class="main-content">
+       <div class="container-fluid">
+          <div class="row mb-4">
+             <div class="col-md-12 col-lg-12 col-sm-12">
+                <div class="civil-issuing">
+                   <div class="titleHeadissue">
+                      <i class="material-icons mr-2" style="float:left;">assignment_turned_in</i>
+                      RAISED INVOICE DETAILS
+                   </div>
+                </div>
+             </div> 
+                      
+          </div>
+         <div class="card">
+            <div class="card-body">
+               <div class="row">
+                  <div class="col-md-12 col-lg-12 col-sm-12">
+                    <div class="table-responsive">
+                        <table class="table">
+                           <tr>
+                              <th style="width:600px">
+                                 Invoice Id
+                              </th>
+                              <th>
+                                 {{invoiceDetails.id}}
+                              </th>
+                           </tr>
+                           <tr>
+                          <th style="width:600px">
+                                 Buyer Details
+                              </th>
+                              <th>
+                           {{invoiceDetails.purchasingCompanyEmail}}
+                              </th>
+                           </tr>
+                          <!--  <tr>
+                              <th style="width:400px">
+                                 Seller Details
+                              </th>
+                              <th>
+                                 {{invoiceDetails.issuingCompanyEmail}}
+                              </th>
+                           </tr> -->
+                            <tr>
+                              <th style="width:400px" colspan="2">
+                                 <strong>Invoice Details</strong>
+                              </th>                            
+                           </tr>
+                            <tr>
+                              <td colspan="2">
+                                 <table class="table" *ngFor="let item of invoiceList">
+                                    <tr>
+                                       <th style="width:600px;">
+                                          Invoice Number
+                                       </th>
+                                       <th>
+                                          {{item.invoiceNo}}
+                                       </th>
+                                    </tr>
+                                    <tr>
+                                       <th style="width:600px">
+                                          Invoice Date
+                                       </th>
+                                       <th>
+                                          {{item.invoiceDate | date: 'dd/MM/yyyy'}}
+                                       </th>
+                                    </tr>
+                                    <tr>
+                                       <th style="width:600px">
+                                          Invoice Amount
+                                       </th>
+                                       <th>
+                                          {{item.invoiceAmount}}
+                                       </th>
+                                    </tr>
+                                     <tr>
+                                       <th style="width:600px">
+                                          Invoice Uploaded By Seller Document
+                                       </th>
+                                       <th>
+                                          <a class="text-primary">
+                                             {{item.invoiceDoc ?item.invoiceDoc:"http://49.50.67.44/invoice-backend/files/1586531680740_formBg.png"}}</a>
+                                       </th>
+                                    </tr>
+                                   
+                        </table>
+                     </td>
+                   </tr>
+                           
+                           <tr>
+                              <th style="width:600px">
+                                Total  Invoice Amount
+                              </th>
+                              <th>
+                                 {{invoiceDetails.totalInvoiceAmount}}
+                              </th>
+                           </tr>                           
+                           <tr>
+                              <th style="width:600px">
+                                Request Raised Date
+                              </th>
+                              <th>
+                                 {{invoiceDetails.cts | date: 'dd/MM/yyyy'}}
+                              </th>
+                           </tr>
+                         
+                        </table>
+                     </div>
+                  </div>
+
+               </div>
+               <!--  <div class="row">
+                <div class="col-sm-12 text-center">
+                    <div>
+                    <div >
+                      <button type="button" name="button" data-toggle="modal"  class="btn bg-success btn-sm mat-raised-button mr-1" (click)="accept()">Accept</button>                     
+                    </div>
+                  </div>
+                  </div>
+               </div> -->
+            </div>
+
+         </div>
+        
+       </div>
+    </div>
+ </div>
+ 

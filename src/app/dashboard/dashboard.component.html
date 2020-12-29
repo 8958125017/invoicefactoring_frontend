@@ -1,0 +1,181 @@
+<div class="main-content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-5 col-lg-5 col-sm-5">
+            <div class="titleHead float-left">BUSINESS DASHBOARD</div>
+          </div>
+          <div class="col-md-7col-lg-7 col-sm-7">
+            <button class="btn float-right mat-raised-button" routerLink='/Raise_New_Invoice'><i class="material-icons mr-2">assignment_turned_in</i>RAISE NEW INVOICE</button>
+          </div>
+        </div>
+          <div class="row">
+              <div class="col-md-4">
+                  <div class="card card-stats card_one"> 
+                      <div class="card-header card-header-icon">
+                       <p class="card-title float-right">Total Invoice <br> Raised</p>
+                          <h3 class="cardnum float-right">{{allRaisedInvoiceCount?allRaisedInvoiceCount:0}} </h3>
+                      </div>
+                      <div class="oval">
+                           <i class="material-icons done-icons">done</i>
+                           <span class="very">Verified</span>
+                      </div>
+                    </div>
+              </div>
+              <div class="col-md-4">
+                  <div class="card card-stats card_one">
+                      <div class="card-header card-header-success card-header-icon">
+                                             <p class="card-title float-right">Total In-Process <br>                              Invoice</p>
+                          <h3 class="cardnum float-right">{{totalProcessCount?totalProcessCount:0}} </h3>
+                      </div>
+                      <div class="oval">
+                           <i class="material-icons done-icons">done</i>
+                           <span class="very">Verified</span>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-4">
+                  <div class="card card-stats card_one">
+                      <div class="card-header card-header-danger card-header-icon">
+
+                          <p class="card-title float-right">Total Processed<br> INVOICE</p>
+                          <h3 class="cardnum float-right">{{totalProcessedCount?totalProcessedCount:0}} </h3>
+                      </div>
+                      <div class="oval">
+                           <i class="material-icons done-icons">done</i>
+                           <span class="very">Verified</span>
+                      </div>
+                   </div>
+              </div>
+           
+          </div>
+          <div class="row">
+            <div class="col-md-12 col-lg-12 col-sm-12">
+                <div class="titleHead float-left">
+                  <a (click)="getAllRaisedInvoices()" style="cursor: pointer;">RAISED INVOICE</a> | 
+                  <a (click)="getAllReceivedInvoices()" style="cursor: pointer;"> NEW RECEIVED INVOICE</a>
+                </div>
+                 <div class="table-responsive" *ngIf="showRised">
+                              <table class="table">
+                                  <thead class="">
+                                      <th>
+                                          S.No.
+                                      </th>
+                                      <th>
+                                       INVOICE ID
+                                      </th>
+                                      <th>
+                                          BUYER EMAIL
+                                      </th>
+                                      <th>
+                                         INVOICE AMOUNT
+                                      </th>
+                                      <th>
+                                          LAST UPDATE TIME
+                                      </th>
+                                     
+                                       <th>
+                                       STATUS
+                                         </th>
+                                          
+                                  </thead>
+                                  <tbody>
+                                     <tr *ngFor="let item of invoiceList; let i = index">
+                                          <td>
+                                            {{i+1}}
+                                          </td>
+                                          <td>
+                                            <a class="text-primary" routerLink="/Invoice_Reveived_Details/{{item.id}}">
+                                              {{item.id}} 
+                                              </a>                                            
+                                      
+                                          </td>
+                                          <td>
+                                            {{item.purchasingCompanyEmail}}
+                                          </td>
+                                          <td>
+                                       {{item.totalInvoiceAmount}}
+                                          </td>
+                                          <td>
+                                         {{item.cts | date: 'dd/MM/yyyy'}}
+                                          </td>
+                                          
+                                         <td>
+                                          <span *ngIf="item.sts==='0'" class="text-danger">Reject</span>
+                                          <span *ngIf="item.sts==='1'" class="text-primary">Pending</span>
+                                          <span *ngIf="item.sts==='2'" class="text-success">Approved</span>
+                                          <span *ngIf="item.sts==='5'" class="text-warning">Processed</span>
+                                          </td> 
+                                           
+                                      </tr>
+                                     
+                                  </tbody>
+                              </table>
+                                <div class="no-data" *ngIf="dataLength">
+                                  <h4 class="error-heading"> Oops!</h4>
+                                  <div> No Data Found</div>
+                                </div>
+                          </div>
+                           <div class="table-responsive" *ngIf="showreceive">
+                              <table class="table">
+                                  <thead class="">
+                                      <th>
+                                          S.No.
+                                      </th>
+                                      <th>
+                                       INVOICE ID
+                                      </th>
+                                      <th>
+                                          BUYER EMAIL
+                                      </th>
+                                      <th>
+                                        SELLER EMAIL
+                                      </th>
+                                      <th>
+                                          INVOICE AMOUNT
+                                      </th>
+                                      <th>
+                                       STATUS
+                                       </th>
+                                          
+                                  </thead>
+                                  <tbody>
+                                      <tr *ngFor="let item of receiveinvoiceList; let i = index">
+                                          <td>
+                                             {{i+1}}
+                                          </td>
+                                          <td>
+                                          <a class="text-primary" routerLink="/Receive_Invoice_Details/{{item.id}}">
+                                              {{item.id}} 
+                                              </a>                                          
+                                      
+                                          </td>
+                                          <td>
+                                             {{item.purchasingCompanyEmail}} 
+                                          </td>
+                                          <td>
+                                        {{item.issuingCompanyEmail}} 
+                                          </td>
+                                          <td>
+                                        {{item.totalInvoiceAmount}}
+                                          </td>                                         
+                                          <td>
+                                          <span *ngIf="item.sts==='0'" class="text-danger">Reject</span>
+                                          <span *ngIf="item.sts==='1'" class="text-primary">Pending</span>
+                                          <span *ngIf="item.sts==='2'" class="text-success">Approved</span>
+                                          <span *ngIf="item.sts==='5'" class="text-warning">Processed</span>
+                                          </td>                                           
+                                      </tr>                                     
+                                  </tbody>
+                              </table>
+                               <div class="no-data" *ngIf="dataLength1">
+                                  <h4 class="error-heading"> Oops!</h4>
+                                  <div> No Data Found</div>
+                                </div>
+                          </div>
+            </div>
+            
+          </div>
+      
+      </div>
+    </div>
+

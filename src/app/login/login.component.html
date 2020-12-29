@@ -1,0 +1,79 @@
+<div id="login-container" class="is-Mobile-login-bg">
+   <div class="rectangle">
+     <div class="form-container">
+       <div class="welcome">
+          <img src="assets/img/logo.png" alt="user"  class="invoiceLogo">
+          
+        </div>
+        <div class="form-bg">
+         <form [formGroup]="loginForm" (ngSubmit)="login()">
+            <div class="welcome-text">Welcome to Invoice Factoring!</div>
+             <div class="login-txt">Login to your account</div>
+             <div class="row mt-2">
+               <div class="col-md-3">
+                     <input class="" type="radio" name="opsType"  value="business" formControlName="opsType">
+                     <label class="form-check-label BUSINESS" for="landRadio1">
+                      Business
+                     </label>
+                  </div>
+                <div class="col-md-3">
+                     <input class="" type="radio" name="opsType"  value="lender" formControlName="opsType">
+                     <label class="form-check-label BUSINESS" for="landRadio2">
+                       Lender
+                     </label>
+               </div>
+            </div>
+            <div class="row mt-1">
+               <div class="col-md-6">
+                  <mat-form-field class="example-full-width" style="margin-bottom: 15px;">
+                     <input matInput placeholder="Email" formControlName="email" type="email" autocomplete="nope">
+                      <mat-error>  
+                        <span *ngIf="loginForm.controls.email.errors?.required && isValidFormSubmitted != null && !isValidFormSubmitted" class="small text-danger"> Please enter email.</span>
+                        <span *ngIf="loginForm.controls.email.status === 'INVALID' && !loginForm.controls.email.errors?.required" class="small text-danger">Email must be a valid email address</span>
+                      </mat-error> 
+                  </mat-form-field>
+               </div>
+               <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                     <input matInput placeholder="Password" type="password" formControlName="password" autocomplete="off">
+                      <mat-error >
+                      <span *ngIf="loginForm.controls.password.errors?.required && isValidFormSubmitted != null && !isValidFormSubmitted" class="small text-danger">Please enter password.</span>
+                     <span *ngIf="loginForm.controls.password.errors?.minlength && isValidFormSubmitted != null && !isValidFormSubmitted" class="small text-danger">Please must be minimum 6 chracter</span>
+      
+                       </mat-error>
+                  </mat-form-field>
+               </div>
+            </div>
+         <div class="row copyright">
+         <div class="col-md-7">
+            <input type="checkbox" class="filled-in" />
+             <span class="rememberMe">Remember me.</span>
+         </div>
+         <div class="col-md-5">
+            <label class="Forgot-Password float-right">
+               <a href="JavaScript:Void(0)">Forgot Password?</a>
+           </label>
+         </div>
+      </div>
+       <button type="submit" class="btn btn-primary" >Login</button>
+       <p>
+          <small>
+           Not Already Registered yet? <a routerLink="/signup" style="color:#023794;">Sign Up</a>
+         </small>
+         </p>
+       </form>
+      </div>
+          <div class="row mt-2 copyright">
+             <div class="col-md-6" style="padding-left:64px;color:#ccc;">
+                <div class="">© 2020 Blockcube Technology Limited.</div>
+             </div>
+             <div class="col-md-6"style="padding-right: 74px;
+             text-align: right;">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>

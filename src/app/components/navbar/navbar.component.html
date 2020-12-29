@@ -1,0 +1,107 @@
+<nav class="navbar navbar-expand-lg navbar-absolute fixed-top">
+    <div class="container-fluid">
+     
+        <button mat-raised-button class="navbar-toggler" type="button" (click)="sidebarToggle()">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-start">
+        <div *ngIf="isBusiness">
+          <img src="assets/img/logo.png" alt="user" routerLink="/dashboard" class="navInvoiceLogo">
+          
+        </div>
+          <div *ngIf="!isBusiness">
+          <img src="assets/img/logo.png" alt="user" routerLink="/lenderDashboard" class="navInvoiceLogo">
+          
+        </div>
+    </div>
+        <div class="justify-content-end isMobileNabVar" id="navigation" *ngIf="isBusiness">
+
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="user-name" routerLink='/dashboard'>
+                        Dashboard
+                    </a>
+                </li>
+               
+                
+               
+                <li class="nav-item" >
+                    <a class="user-name" routerLink='/Raised_Invoice'>
+                       Raised-Invoice 
+                    </a>
+                </li>
+                 <li class="nav-item" >
+                    <a class="user-name" routerLink='/Received_Invoice'>
+                       Received Invoice
+                    </a>
+                </li>
+               
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="javascript:void(0)" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="material-icons">notifications_outline</i>
+                        <span class="notification">5</span>
+                       
+                    </a>
+               
+                </li>
+                <li class="nav-item">
+                 <a class="nav-link" href="javascript:void(0)" id="navbarDropdownUserLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <div class="user-name">
+                              {{businessName}}<br>
+                        
+                              <i class="mdi mdi-menu-down down-menu"></i>
+                            </div>
+                      <img src="assets/img/faces/marc.jpg" alt="user" class="rounded-circle">
+                  </a>
+                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownUserLink">
+                            <a class="dropdown-item" (click)="logout()">Log out</a>
+                  </div>
+                </li>
+           </ul>
+        </div>
+                <div class="justify-content-end isMobileNabVar" id="navigation" *ngIf="!isBusiness">
+
+            <ul class="navbar-nav">
+                
+                <li class="nav-item">
+                    <a class="user-name" routerLink='/lenderDashboard'>
+                        Dashboard
+                    </a>
+                </li>
+                 <li class="nav-item" >
+                    <a class="user-name" routerLink='/Received_Invoice'>
+                       Received Invoice
+                    </a>
+                </li>
+               
+                
+               
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="javascript:void(0)" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="material-icons">notifications_outline</i>
+                        <span class="notification">5</span>
+                       
+                    </a>
+               
+                </li>
+                <li class="nav-item">
+                 <a class="nav-link" href="javascript:void(0)" id="navbarDropdownUserLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <div class="user-name">
+                              {{businessName}}<br>
+                        
+                              <i class="mdi mdi-menu-down down-menu"></i>
+                            </div>
+                      <img src="assets/img/faces/marc.jpg" alt="user" class="rounded-circle">
+                  </a>
+                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownUserLink">
+                            <a class="dropdown-item" (click)="logout()">Log out</a>
+                  </div>
+                </li>
+           </ul>
+        </div>
+    </div>
+</nav>
+

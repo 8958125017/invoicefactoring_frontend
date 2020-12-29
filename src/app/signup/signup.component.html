@@ -1,0 +1,142 @@
+<div id="login-container" class="is-Mobile-login-bg">
+   <div class="rectangle">
+     <div class="form-container">
+       <div class="welcome">
+          <img src="assets/img/logo.png" alt="user"  class="invoiceLogo">
+        </div>
+        <div class="form-bg">
+          <form [formGroup]="businessForm" (ngSubmit)="signup()">
+             <div class="welcome-text">Welcome to Invoice Factoring!</div>
+             <div class="login-txt">Sign up your account. </div>
+             <div class="row mt-2">
+                   <div class="col-md-3">
+                         <input class="" type="radio" name="opsType"  value="business" formControlName="opsType">
+                         <label class="form-check-label BUSINESS" for="landRadio1">
+                          Business
+                         </label>
+                      </div>
+                    <div class="col-md-3">
+                         <input class="" type="radio" name="opsType"  value="lender" formControlName="opsType">
+                         <label class="form-check-label BUSINESS" for="landRadio2">
+                           Lender
+                         </label>
+                   </div>
+                </div>
+             <div class="row mt-1">
+               
+                <div class="col-md-4">
+                    <mat-form-field class="example-full-width" style="margin-bottom:2px;">
+                         <input matInput placeholder="Email" formControlName="bEmail" type="email" autocomplete="nope">
+                          <mat-error>  
+                            <span *ngIf="businessForm.controls.bEmail.errors?.required " class="small text-danger"> Please enter email.</span>
+                         
+                        </mat-error> 
+                   </mat-form-field>
+                </div>
+
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width" style="margin-bottom: 2px;">
+                      <input matInput placeholder="Mobile Number"  onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="10" formControlName="bNumber" type="email" autocomplete="nope">
+                       <mat-error>  
+                         <span *ngIf="businessForm.controls.bNumber.errors?.required && isValidFormSubmitted != null && !isValidFormSubmitted" class="small text-danger"> Please enter mobile Numer.</span>                          
+                     </mat-error> 
+                </mat-form-field>
+                </div>
+
+                <div class="col-md-4">
+                        <mat-form-field class="example-full-width" style="margin-bottom: 2px;">
+                            <input matInput placeholder="Address" formControlName="bAddress" type="email" autocomplete="nope">
+                             <mat-error>  
+                               <span *ngIf="businessForm.controls.bAddress.errors?.required && isValidFormSubmitted != null && !isValidFormSubmitted" class="small text-danger"> Please enter adress.</span>                               
+                           </mat-error> 
+                      </mat-form-field>
+                </div>
+            </div>
+        
+            <div class="row mt-1 mb-3">
+          
+                <div class="col-md-4">
+                      <mat-form-field>
+                            <mat-label>Country</mat-label>
+                           <input matInput placeholder="Country" formControlName="country" type="email" autocomplete="nope">
+                               
+                           </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                      <mat-form-field>
+                            <mat-label>State</mat-label>
+                           <input matInput placeholder="State" formControlName="state" type="email" autocomplete="nope">
+                               
+                           </mat-form-field>
+                   </div>
+                    <div class="col-md-4">
+                  <mat-form-field class="example-full-width" style="margin-bottom: 2px;">
+                      <input matInput placeholder="Compay Registrtion Number"  onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="10" formControlName="crNumber" type="email" autocomplete="nope">
+                       <mat-error>  
+                         <span *ngIf="businessForm.controls.bNumber.errors?.required && isValidFormSubmitted != null && !isValidFormSubmitted" class="small text-danger"> Please enter company registration Number.</span>                          
+                     </mat-error> 
+                </mat-form-field>
+                </div>
+            </div>
+              <div class="row mt-1 mb-3">
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width" style="margin-bottom: 2px;">
+                      <input matInput placeholder="Compay TAX Number"  onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="10" formControlName="trNumber" type="email" autocomplete="nope">
+                       <mat-error>  
+                         <span *ngIf="businessForm.controls.trNumber.errors?.required && isValidFormSubmitted != null && !isValidFormSubmitted" class="small text-danger"> Please enter company TAX Number.</span>                          
+                     </mat-error> 
+                </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                      <mat-form-field>
+                            <mat-label>Password</mat-label>
+                           <input matInput placeholder="Password" formControlName="password" type="password" autocomplete="nope">
+                                <div class="small"
+                    *ngIf="!businessForm.controls['password'].valid&&businessForm.controls['password'].dirty&& isValidFormSubmitted != null && !isValidFormSubmitted">
+                    <span *ngIf="businessForm.controls['password'].errors['required']&& isValidFormSubmitted != null && !isValidFormSubmitted"
+                      class="small redlabe text-danger">Password cannot be left blank</span>
+                    <span *ngIf="businessForm.controls['password'].errors['minlength']"
+                      class="small redlabe text-danger">password must be atleast 6 characters</span>
+                    <span
+                      *ngIf="businessForm.controls['password'].errors['pattern']&&!businessForm.controls['password'].errors['minlength']"
+                      class="small redlabe text-danger">Password must contain at least 6 characters including 1
+                      uppercase and 1 lowercase letter, 1 special character and 1 number</span>
+                </div>
+                           </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                      <mat-form-field>
+                            <mat-label>Confirm Password</mat-label>
+                           <input matInput placeholder="Confirm password" formControlName="confirmPassword" type="password" autocomplete="nope">
+                                <div class="small redlabe text-danger"
+                    *ngIf="!businessForm.controls['confirmPassword'].valid&&businessForm.controls['confirmPassword'].dirty"
+                    class="p-2 w-100 rounded small login_input">
+                  </div>
+                  <div
+                    *ngIf="businessForm.controls['confirmPassword'].dirty&&businessForm.hasError('mismatchedPasswords')">
+                    <span class="small redlabe text-danger"> Password do not match.</span></div>
+                           </mat-form-field>
+                   </div>
+            </div>
+             <button type="submit" class="btn btn-primary" >Submit</button>
+             <p>
+                <small>
+                   Already Registered? <a routerLink="/login" style="color:#023794;">Login</a>
+                </small>
+             </p>
+          </form>
+       </div>
+          <div class="row mt-2 copyright">
+             <div class="col-md-6" style="padding-left:64px;color:#ccc;">
+                <div class="">© 2020 Blockcube Technology Limited.</div>
+             </div>
+             <div class="col-md-6"style="padding-right: 74px;
+             text-align: right;">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>

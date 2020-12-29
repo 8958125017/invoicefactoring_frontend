@@ -1,0 +1,122 @@
+<div id="myLandRecord">
+    <div class="main-content">
+       <div class="container-fluid">
+          <div class="row mb-4">
+             <div class="col-md-12 col-lg-12 col-sm-12">
+                <div class="civil-issuing">
+                   <div class="titleHeadissue">
+                      <i class="material-icons mr-2" style="float:left;">assignment_turned_in</i>
+                New Invoive
+                   </div>
+                </div>
+             </div>
+          </div>
+       
+          <div class="card">
+             <form [formGroup]="ekycForm" (ngSubmit)="submitInvoice()">
+             <div class="card-body">
+               <div class="row mb-2">
+                   <div class="col-md-2">
+                      Buyer Registred EmailId<span class="text-danger">*</span>
+                   </div>
+                   <div class="col-md-4">
+                     <div class="custom-file">
+                          <input type="text" class="form-control" placeholder="Enter Buyer Registred EmailId" formControlName="pcid">                        
+                      </div>
+                   </div>                  
+               </div>
+               
+               <div *ngFor="let item of docArray;let i=index">
+               <div class="row mb-2">
+                   <div class="col-md-2">
+                      Invoice Number<span class="text-danger">*</span>
+                   </div>
+                   <div class="col-md-4">
+                     <div class="custom-file">
+                          <input type="text" class="form-control" onkeypress="return event.charCode >= 48 && event.charCode <= 57" placeholder="Enter Invoice Number" [(ngModel)]="docArray[i].invoiceNo" [ngModelOptions]="{standalone: true}">
+                        
+                      </div>
+                   </div>
+                   <div class="col-md-2">
+                     <div class="custom-file">
+                         <input type="file"  id="customFile"  (change)="fileUpload($event,i)" [ngModelOptions]="{standalone: true}" [(ngModel)]="docArray[i].invoiceDoc"> 
+                          
+                          </div>
+                         <!-- <div class="custom-file" > -->
+                         
+                        <!-- </div> -->
+                    </div>
+                      <div class="col-md-2">
+                     <div class="custom-file">
+                        
+                           <a class="text-primary" style="cursor: pointer" (click)="addMore(i)"><b>Add more</b></a>&nbsp;
+                       <a class="text-danger"  style="cursor: pointer" (click)="remove(i)" ><b>Remove</b></a>
+                          </div>
+                         <!-- <div class="custom-file" > -->
+                         
+                        <!-- </div> -->
+                    </div>
+               </div>
+                <div class="row mb-2">
+                   <div class="col-md-2">
+                      Invoice Amount<span class="text-danger">*</span>
+                   </div>
+                   <div class="col-md-4">
+                     <div class="custom-file">
+                         <input type="text" class="form-control" placeholder="Enter Invoice Amount" onkeypress="return event.charCode >= 48 && event.charCode <= 57" [(ngModel)]="docArray[i].invoiceAmount" [ngModelOptions]="{standalone: true}" >
+                        
+                      </div>
+                   </div>
+                 
+               </div> 
+               <div class="row mb-2">
+                   <div class="col-md-2">
+                      Invoice Date<span class="text-danger">*</span>
+                   </div>
+                   <div class="col-md-4">
+                     <div class="custom-file">
+                          <input type="Date" class="form-control" placeholder="Enter Payment Date" [(ngModel)]="docArray[i].invoiceDate" [ngModelOptions]="{standalone: true}" >
+                      </div>
+                   </div>
+                   
+                 
+               </div>
+             
+              </div>
+                <div class="row mb-2">
+                   <div class="col-md-2">
+                     Lender Registred EmailId<span class="text-danger">*</span>
+                   </div>
+                   <div class="col-md-4">
+                     <div class="custom-file">
+                          <input type="text" class="form-control" placeholder="Enter Lender Registred EmailId" formControlName="lender_Id" >
+                        
+                      </div>
+                   </div>
+                
+               </div>
+               <div class="row mb-2">
+                   <div class="col-md-2">
+                     Total Invoice Amount<span class="text-danger">*</span>
+                   </div>
+                   <div class="col-md-4">
+                     <div class="custom-file">
+                          <input type="text" class="form-control" onkeypress="return event.charCode >= 48 && event.charCode <= 57" placeholder="Enter Total Invoice" formControlName="totalInvoice" >
+                        
+                      </div>
+                   </div>
+                  
+               </div>
+
+                <div class="row mb-2 mt-5">
+                         <div class="col-md-12 text-center">
+                            <button class="btn btn-success">Submit</button>
+                        </div>
+                 </div>
+             </div>
+            </form>
+          </div>
+       </div>
+    </div>
+ </div>
+ 

@@ -1,0 +1,92 @@
+<div id="myLandRecord">
+    <div class="main-content">
+       <div class="container-fluid">
+          <div class="row mb-4">
+             <div class="col-md-12 col-lg-12 col-sm-12">
+                <div class="civil-issuing">
+                   <div class="titleHeadissue">
+                      <i class="material-icons mr-2" style="float:left;">assignment_turned_in</i>
+                      RECEIVED INVOICE 
+                   </div>
+                </div>
+             </div> 
+            <!--   <div class="col-md-12 col-lg-12 col-sm-12">
+                <div class="titleHead float-left">INVOICE RECEIVED REQUEST</div>
+             </div> -->           
+          </div>
+            <div class="row">
+            <div class="col-md-12 col-lg-12 col-sm-12">
+           <!--      <div class="titleHead float-left"><a>RAISED INVOICE</a> | <a> NEW RECEIVED INVOICE</a></div> -->
+                 <div class="table-responsive">
+                              <table class="table">
+                                  <thead class="">
+                                      <th>
+                                          S.No.
+                                      </th>
+                                      <th>
+                                       INVOICE ID
+                                      </th>
+                                      <th>
+                                          BUYER EMAILID
+                                      </th>
+                                      <th>
+                                        SELLER EMAILID
+                                      </th>
+                                      <th>
+                                          INVOICE AMOUNT
+                                      </th>
+                                      <!-- <th>
+                                        PAYMENT DATE
+                                      </th> -->
+                                       <th>
+                                       STATUS
+                                         </th>
+                                          
+                                  </thead>
+                                  <tbody>
+                                       <tr *ngFor="let item of invoiceList; let i = index">
+                                          <td>
+                                            {{i+1}}
+                                          </td>
+                                          <td>
+                                             <a class="text-primary" routerLink="/Received_Invoice_Details/{{item.id}}"*ngIf="opsType === 'lender'">
+                                              {{item.id}}
+                                              </a>                                           
+                                            <a class="text-primary" routerLink="/Receive_Invoice_Details/{{item.id}}" *ngIf="opsType === 'business'">
+                                              {{item.id}}
+                                              </a> 
+                                          </td>
+                                          <td>
+                                            {{item.purchasingCompanyEmail}}
+                                          </td>
+                                          <td>
+                                       {{item.issuingCompanyEmail}}
+                                          </td>
+                                          <td>
+                                         {{item.totalInvoiceAmount}}
+                                          </td>
+                                          <!-- <td> 
+                                     {{item.cts | date: 'dd/MM/yyyy'}}
+                                          </td> -->
+                                          <td>
+                                          <span *ngIf="item.sts==='0'" class="text-danger">Reject</span>
+                                          <span *ngIf="item.sts==='1'" class="text-primary">Pending</span>
+                                          <span *ngIf="item.sts==='2'" class="text-success">Approved</span>
+                                          <span *ngIf="item.sts==='5'" class="text-warning">Processed</span>
+                                          </td>                                           
+                                      </tr>                                       
+                                  </tbody>
+                              </table>
+                                <div class="no-data" *ngIf="dataLength">
+                                  <h4 class="error-heading"> Oops!</h4>
+                                  <div> No Data Found</div>
+                                </div>
+                          </div>
+            </div>
+            
+          </div>
+        
+       </div>
+    </div>
+ </div>
+ 

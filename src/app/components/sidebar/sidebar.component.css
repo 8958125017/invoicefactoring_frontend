@@ -1,0 +1,46 @@
+.sidebar .logo:after {
+    content: "";
+    position: absolute;
+    bottom: 4px !important;
+    right: 15px;
+    height: 1px;
+    width: calc(100% - 30px);
+    background-color: rgba(180, 180, 180, 0.3);
+}
+
+.sidebar .nav {
+    margin-top: 2px !important;
+    display: block;
+}
+
+.isMobileMenu{
+    display: none;
+}
+
+
+.show{
+    display: block;
+
+}
+
+.hide{
+    display: none;
+}
+
+.landOwnership{
+    margin-top: -27px;
+    margin-left: 50px;
+}
+
+.civilOwnership{
+    margin-top: -27px;
+    margin-left: 50px;
+}
+
+.showMenu{
+    display:block;
+}
+
+.hideMenu{
+    display:none;
+}
